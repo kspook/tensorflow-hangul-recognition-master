@@ -5,6 +5,9 @@ import io
 import os
 
 import tensorflow as tf
+
+import datetime
+
 from tensorflow.python.tools import freeze_graph
 from tensorflow.python.tools import optimize_for_inference_lib
 
@@ -299,6 +302,9 @@ def main(label_file, tfrecords_dir, model_output_dir, num_train_steps):
 
         accuracy_percent = total_correct_preds/(num_batches*BATCH_SIZE)
         print("Testing Accuracy {}".format(accuracy_percent))
+
+        s = datetime.datetime.now()
+        print (s)
 
         export_model(model_output_dir, [input_node_name, keep_prob_node_name],
                      output_node_name)
